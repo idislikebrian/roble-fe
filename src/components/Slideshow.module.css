@@ -1,0 +1,37 @@
+.slideshowContainer {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+  }
+  
+  .slideshowImage img {
+    height: 60vh;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  

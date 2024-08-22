@@ -1,94 +1,56 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Top from "@/components/Top";
+import Text from "@/components/Text";
+import Slideshow from "@/components/Slideshow";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
+      <nav></nav>
+      <div className={styles.hero}>
+        <div className={styles.logo}>
+        <Image src="logo-black.svg" width={150} height={150} /></div>
+        <h2>Do you want a home that stands out from the rest?</h2>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
+          At Roble Home Improvement and Management, we specialize in roofing and
+          siding services that make your home look the best it can. Our team of
+          craftsmen have years of experience and use high-quality materials to
+          ensure top-notch results.
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+        <Text />
+      </div>
+      <div className={styles.services}>
+        <h3>Our Services</h3>
+        <div className={styles.servList}>
+          <div>
+            <p>🚛</p>
+            <p>Garbage Removal</p>
+          </div>
+          <div>
+            <p>🪜</p>
+            <p>Roofing</p>
+          </div>
+          <div>
+            <p>🏠</p>
+            <p>Siding</p>
+          </div>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className={styles.projects}>
+        <h3>Our Projects</h3>
+        <Slideshow />
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={styles.contact}>
+        <p>
+          Contact us today to get started on your roofing and siding project!
+        </p>
+        <h4>Let's create progress together.</h4>
+        <Text />
+      </div>
+      <div className={styles.top}>
+        <Top />
       </div>
     </main>
   );
