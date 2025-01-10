@@ -14,10 +14,8 @@ export default function Home() {
         <Image src="logo-black.svg" width={150} height={150} /></div>
         <h2>Do you want a home that stands out from the rest?</h2>
         <p>
-          At Roble Home Improvement and Management, we specialize in roofing and
-          siding services that make your home look the best it can. Our team of
-          craftsmen have years of experience and use high-quality materials to
-          ensure top-notch results.
+          At Roble, we specialize in roofing and
+          siding services that make your home look the best it can.
         </p>
         <Text />
       </div>
@@ -46,7 +44,7 @@ export default function Home() {
         <p>
           Contact us today to get started on your roofing and siding project!
         </p>
-        <h4>Let's create progress together.</h4>
+        <h4>Let&apos;s create progress together.</h4>
         <Text />
       </div>
       <div className={styles.top}>
