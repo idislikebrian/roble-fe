@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 :root {
   --max-width: 1100px;
-  --font: "New Amsterdam", sans-serif;
+  --font: "Bebas Neue", sans-serif;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -53,18 +53,18 @@ body {
 }
 
 h2 {
-  font-size: 3em;
+  font-size: xxx-large;
   line-height: 0.9em;
   margin-bottom: 1em;
 }
 
 h3 {
-  font-size: 2em;
+  font-size: xx-large;
   margin-bottom: 1em;
 }
 
 p {
-  font-size: 1.6em;
+  font-size: x-large;
 }
 
 a {

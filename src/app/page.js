@@ -14,7 +14,7 @@ export default function Home() {
         <Image src="logo-black.svg" width={150} height={150} /></div>
         <h2>Do you want a home that stands out from the rest?</h2>
         <p>
-          At Roble, we specialize in roofing and
+          We specialize in roofing and
           siding services that make your home look the best it can.
         </p>
         <Text />
