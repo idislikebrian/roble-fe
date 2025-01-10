@@ -85,10 +85,10 @@ export default function Home() {
         <h3>Our Services</h3>
         <div className={styles.servList}>
           {SERVICES_DATA.primary.map((service, index) => (
-            <Accordion type="single" collapsible>
+            <Accordion key={index} type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>
-                  <div key={index}>
+                  <div>
                     <service.icon {...ICON_STYLES} />
                     <p>{service.title}</p>
                   </div>
