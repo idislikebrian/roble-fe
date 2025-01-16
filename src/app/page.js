@@ -13,6 +13,8 @@ import {
   ListChecks,
   Plus,
   HouseSimple,
+  Mailbox,
+  PhoneCall,
 } from "@phosphor-icons/react";
 
 import {
@@ -22,14 +24,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-// Add these icon style constants
+import { BounceCards } from "@/components/BounceCards";
+import { FaqAccordion } from "@/components/FAQChatAccordion";
+
 const ICON_STYLES = {
-  size: 40,
+  size: 30,
   color: "#111111",
   weight: "fill",
 };
 
-// Add services data
 const SERVICES_DATA = {
   primary: [
     {
@@ -38,42 +41,102 @@ const SERVICES_DATA = {
       details:
         "Asphalt Shingle Roofing, Metal Roofing, Slate Roofing, Tile Roofing, Flat Roof Systems, Roof Repairs, Roof Maintenance, Emergency Roof Repairs, Roof Inspections, Gutter Installation & Repair, Skylight Installation",
     },
-    { 
-      icon: Buildings, 
+    {
+      icon: Buildings,
       title: "Commercial Roofing",
       details:
-        "Commercial Flat Roofing, TPO Roofing Systems, EPDM Roofing, Modified Bitumen, Commercial Roof Maintenance, Commercial Roof Repair, Industrial Roofing" 
-      },
-    { 
-      icon: Hammer, 
+        "Commercial Flat Roofing, TPO Roofing Systems, EPDM Roofing, Modified Bitumen, Commercial Roof Maintenance, Commercial Roof Repair, Industrial Roofing",
+    },
+    {
+      icon: Hammer,
       title: "Home Improvements",
       details:
-        "Kitchen Remodeling, Bathroom Renovation, Basement Finishing, Window Installation, Door Installation, Deck Construction, Porch Building, Garage Updates, Flooring Installation, Interior Painting, Exterior Painting"  
-      },
-    { 
-      icon: ListChecks, 
+        "Kitchen Remodeling, Bathroom Renovation, Basement Finishing, Window Installation, Door Installation, Deck Construction, Porch Building, Garage Updates, Flooring Installation, Interior Painting, Exterior Painting",
+    },
+    {
+      icon: ListChecks,
       title: "Property Management",
       details:
-        "Seasonal Maintenance, Gutter Cleaning, Snow Removal, Landscape Maintenance, Property Inspections, Storm Damage Assessment, Emergency Repairs, Preventive Maintenance"  
-      },
-    { 
-      icon: HouseSimple, 
+        "Seasonal Maintenance, Gutter Cleaning, Snow Removal, Landscape Maintenance, Property Inspections, Storm Damage Assessment, Emergency Repairs, Preventive Maintenance",
+    },
+    {
+      icon: HouseSimple,
       title: "Siding",
       details:
-        "Vinyl Siding Installation, Fiber Cement Siding, Wood Siding, Metal Siding, Siding Repair, Siding Replacement, Trim & Fascia Work" 
-      },
+        "Vinyl Siding Installation, Fiber Cement Siding, Wood Siding, Metal Siding, Siding Repair, Siding Replacement, Trim & Fascia Work",
+    },
   ],
 };
+
+const images = [
+  "/work/IMG_2358.jpg",
+  "/work/IMG_1350.jpg",
+  "/work/IMG_2272.jpg",
+  "/work/IMG_2273.jpg",
+  "/work/IMG_2348.jpg",
+];
+
+const transformStyles = [
+  "rotate(5deg) translate(-150px)",
+  "rotate(0deg) translate(-70px)",
+  "rotate(-5deg)",
+  "rotate(5deg) translate(70px)",
+  "rotate(-5deg) translate(150px)",
+];
+
+const defaultData = [
+  {
+    answer: "We offer a 10-year warranty on all our roofing services.",
+    icon: "🛠️",
+    iconPosition: "right",
+    id: 1,
+    question: "What kind of warranty do you offer for roofing services?",
+  },
+  {
+    answer: "Yes, we are fully insured and bonded for your protection.",
+    id: 2,
+    question: "Are you insured and bonded?",
+  },
+  {
+    answer:
+      "We use high-quality materials from trusted suppliers to ensure durability.",
+    id: 3,
+    question: "What kind of materials do you use for roofing and siding?",
+  },
+  {
+    answer: "We provide free estimates for all our services. Contact us to schedule.",
+    icon: "📝",
+    iconPosition: "left",
+    id: 4,
+    question: "Do you offer free estimates?",
+  },
+  {
+    answer: "We have a team of experienced professionals with years of experience.",
+    id: 5,
+    question: "How experienced are your roofing and siding contractors?",
+  },
+];
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <nav>
+      <nav className={styles.navContainer}>
+        <div></div>
         <div className={styles.logo}>
           <Image src="logo-black.svg" width={150} height={150} />
         </div>
       </nav>
       <div className={styles.hero}>
+        <BounceCards
+          images={images}
+          containerWidth={800}
+          containerHeight={400}
+          animationDelay={0.5}
+          animationStagger={0.6}
+          easeType="elastic.out(0.6, 0.8)"
+          transformStyles={transformStyles}
+          className="mx-auto"
+        />
         <h2>Do you want a home that stands out from the rest?</h2>
         <p>
           We specialize in roofing and siding services that make your home look
@@ -93,9 +156,7 @@ export default function Home() {
                     <p>{service.title}</p>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent>
-                {service.details}
-                </AccordionContent>
+                <AccordionContent>{service.details}</AccordionContent>
               </AccordionItem>
             </Accordion>
           ))}
@@ -106,14 +167,34 @@ export default function Home() {
         <Slideshow />
       </div>
       <div className={styles.contact}>
+      <div className={styles.faq} style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <FaqAccordion
+            data={defaultData}
+            timestamp="Updated daily at 12:00 PM"
+          />
+        </div>
         <p>
           Contact us today to get started on your roofing and siding project!
         </p>
         <h4>Let&apos;s create progress together.</h4>
         <Text />
+        
       </div>
-      <footer>
-        <p>Call: 201 394 7939 // se habla español</p>
+      <footer className={styles.footerContainer}>
+        <div className={styles.footerColumn}>
+          <p>Request an Estimate</p>
+        </div>
+        <div className={styles.footerColumn}>
+          <p>
+          📞 201 394 7939
+          </p>
+          <p>
+          📧 robleroofnsiding@gmail.com
+          </p>
+        </div>
+        <div className={styles.footerColumn}>
+          <p>Se habla español</p>
+        </div>
       </footer>
       <div className={styles.top}>
         <Top />

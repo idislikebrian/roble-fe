@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --max-width: 1100px;
-  --font: "Bebas Neue", sans-serif;
+  --font-family-headings: "Bebas Neue", sans-serif;
+  --font-family-body: "Work Sans", serif;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -42,21 +43,24 @@ body {
 }
 
 body {
-  font-family: var(--font);
+  font-family: var(--font-family-body);
 }
 
 h2 {
+  font-family: var(--font-family-headings);
   font-size: xxx-large;
   line-height: 0.9em;
   margin-bottom: 1em;
 }
 
 h3 {
+  font-family: var(--font-family-headings);
   font-size: xx-large;
   margin-bottom: 1em;
 }
 
 p {
+  font-family: var(--font-family-body);
   font-size: x-large;
 }
 
@@ -66,6 +70,7 @@ a {
 }
 
 button {
+  font-family: var(--font-family-headings);
   background-color: transparent;
   border: none;
   padding: 0;
@@ -85,4 +90,10 @@ button svg {
 
 button:hover svg {
   color: var(--red); /* Darker color on hover */
+}
+
+footer {
+  background-color: var(--black);
+  color: var(--mint);
+  width: 100%;
 }

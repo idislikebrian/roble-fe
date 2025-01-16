@@ -10,7 +10,11 @@
 .top {
   position: fixed;
   left: 20px;
-  bottom: 20px; 
+  bottom: calc(100vh - 80%); 
+}
+
+.navContainer {
+  padding-top: 3em;
 }
 
 .logo {
@@ -24,7 +28,7 @@
   width: 100%;
   min-height: 75vh;
   padding: 3em;
-  font-family: var(--font);
+  font-family: var(--font-family-body);
   text-align: center;
 }
 
@@ -43,6 +47,12 @@
   margin: 50px 0px;
 }
 
+.faq {
+  display: flex;
+  width: 33%;
+  justify-self: center;
+}
+
 .projects {
   background-color: var(--mauve);
 }
@@ -51,7 +61,19 @@
   background-color: var(--yellow);
 }
 
-/* Enable hover only on non-touch devices */
+.footerContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px 20px 70px;
+  align-items: end;
+  margin-top: 50px;
+}
+
+.footerColumn  {
+  text-align: center;
+}
+
 @media (hover: hover) and (pointer: fine) {
 
 }

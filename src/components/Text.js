@@ -9,7 +9,7 @@ const Text = () => {
   );
   const smsLink = `sms:${phoneNumber}&body=${message}`;
 
-  return <div className={styles.root}><a href={smsLink} className={styles.link}><button className={styles.text}>Send us a text 💬</button></a></div>;
+  return <div className={styles.root}><a href={smsLink} className={styles.link}><button className={styles.text}>Text Us 💬</button></a></div>;
 };
 
 export default Text;

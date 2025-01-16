@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Slideshow.module.css";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Slideshow = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [images, setImages] = useState([]);
+  const [loadedImages, setLoadedImages] = useState([]);
 
   useEffect(() => {
     const importImages = () => {
@@ -15,12 +17,23 @@ const Slideshow = () => {
         false,
         /\.(png|jpe?g|svg|gif)$/
       );
-      const imagePaths = context.keys().map((key) => context(key).default);
+      const imagePaths = context.keys().map((key) => {
+        const image = context(key);
+        return image.default ? image.default : image;
+      });
       setImages(imagePaths);
+      preloadImages(imagePaths);
     };
 
     importImages();
   }, []);
+
+  const preloadImages = (imagePaths) => {
+    const loaded = imagePaths.map((src) => (
+      <Image src={src} alt="" width={1000} height={1000} priority={true} />
+    ));
+    setLoadedImages(loaded);
+  };
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -36,14 +49,21 @@ const Slideshow = () => {
     <div className={styles.slideshowContainer}>
       {images.length > 0 && (
         <>
-          <div className={styles.slideshowImage}>
+          <motion.div
+            className={styles.slideshowImage}
+            key={currentIndex}
+            initial={{ x: 100 }}
+            animate={{ x: 0 }}
+            exit={{ x: -100 }}
+            transition={{ duration: 0.5 }}
+          >
             <Image
               src={images[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
               width={1000}
               height={1000}
             />
-          </div>
+          </motion.div>
           <button className={styles.prev} onClick={prevSlide}>
             &#10094;
           </button>

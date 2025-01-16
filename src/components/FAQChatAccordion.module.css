@@ -1,0 +1,91 @@
+.faqAccordion {
+    padding: 16px; 
+    display: flex; /* Added to enable flexbox */
+    justify-self: center;
+    flex-direction: column; /* Align items in a column */
+    align-items: center; /* Center items horizontally */
+    margin: 0 auto; /* Center the accordion in its container */
+}
+
+.timestamp {
+  margin-bottom: 16px; 
+  font-size: 14px; 
+  color: #6b7280; /* Example muted color */
+}
+
+.accordionItem {
+  margin-bottom: 8px; 
+}
+
+.accordionTrigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px; 
+}
+
+.accordionQuestion {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px; 
+  border-radius: 8px; 
+  transition: background-color 0.3s;
+  background-color: var(--mauve);
+}
+
+.question {
+    font-family: var(--font-family-body);
+    padding: 8px;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.accordionQuestion.active {
+  background-color: lightgray; /* Example active background */
+  color: #111111; /* Example active text color */
+}
+
+.accordionIcon {
+  position: absolute;
+  bottom: 6px; 
+}
+
+.iconRight {
+  right: 0;
+  font-size: 2em;
+}
+
+.iconLeft {
+  left: 0;
+  font-size: 2em;
+}
+
+.iconToggle {
+  color: #6b7280; /* Example muted color */
+}
+
+.iconToggle.active {
+  color: #3b82f6; /* Example active color */
+}
+
+.accordionContent {
+  overflow: hidden;
+}
+
+.answerContainer {
+  margin-left: 28px; 
+  margin-top: 4px; 
+}
+
+.answer {
+  max-width: 300px; 
+  border-radius: 12px; 
+  background-color: var(--mint); /* Example primary background */
+  padding: 12px; 
+  color: #111111; 
+  text-align: left;
+  margin: 5px 50px 80px;
+  font-size: 1em;
+}

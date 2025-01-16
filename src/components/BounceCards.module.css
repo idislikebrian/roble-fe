@@ -1,0 +1,23 @@
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+  } 
+  
+  .card {
+    position: absolute;
+    width: 25%; /* Equivalent to w-[200px] */
+    aspect-ratio: 4/3; /* Equivalent to aspect-square */
+    overflow: hidden;
+    border: 8px solid var(--black);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Equivalent to shadow-lg */
+  }
+  
+  .image {
+    width: 100%; /* Equivalent to w-full */
+    height: 100%; /* Equivalent to h-full */
+    object-fit: cover; /* Equivalent to object-cover */
+  }
