@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 const Slideshow = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [images, setImages] = useState([]);
-  const [loadedImages, setLoadedImages] = useState([]);
 
   useEffect(() => {
     const importImages = () => {
@@ -22,18 +21,10 @@ const Slideshow = () => {
         return image.default ? image.default : image;
       });
       setImages(imagePaths);
-      preloadImages(imagePaths);
     };
 
     importImages();
   }, []);
-
-  const preloadImages = (imagePaths) => {
-    const loaded = imagePaths.map((src) => (
-      <Image src={src} alt="" width={1000} height={1000} priority={true} />
-    ));
-    setLoadedImages(loaded);
-  };
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -62,6 +53,7 @@ const Slideshow = () => {
               alt={`Slide ${currentIndex + 1}`}
               width={1000}
               height={1000}
+              priority={true}
             />
           </motion.div>
           <button className={styles.prev} onClick={prevSlide}>
