@@ -15,18 +15,6 @@
   --red: #BF0703;
   --black: #02040F;
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
 }
 
 
@@ -96,4 +84,22 @@ footer {
   background-color: var(--black);
   color: var(--mint);
   width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button {
+    pointer-events: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  button {
+    color: var(--black);
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  
 }

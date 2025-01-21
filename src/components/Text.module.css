@@ -28,3 +28,9 @@
     transform: scale(1.05);
     padding: 1em 2em;
 }
+
+@media (hover: hover) and (pointer: fine) {
+    .text {
+        pointer-events: none;
+    }
+}

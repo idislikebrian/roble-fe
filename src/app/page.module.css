@@ -74,6 +74,71 @@
   text-align: center;
 }
 
+/* estimate page */
+.formInfo {
+  padding: 2em;
+}
+
+.formSection {
+  margin-bottom: 2em;
+}
+
+.formSection button {
+  min-height: 50px;
+  font-size: 40px;
+  background-color: var(--black);
+  color: #fffff1;
+  margin-top: 20px;
+}
+
+.formContainer {
+  padding: 2em;
+}
+
+.formContainer h2 {
+  margin-bottom: 0.5em;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formInputs input {
+  min-height: 40px;
+  border: 2px var(--black) solid;
+  padding: 5px;
+}
+
+.formInputs select {
+  min-height: 40px;
+  border: 2px var(--black) solid;
+  padding: 5px;
+}
+
+.formInputs textarea {
+  min-height: 80px;
+  border: 2px var(--black) solid;
+  padding: 5px;
+}
+
+.formSelection {
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.formGridTwo {
+  display: grid;
+  grid-template-columns: 0.01fr 0.99fr;
+}
+
+.formGridFour {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 @media (hover: hover) and (pointer: fine) {
 
 }
@@ -87,11 +152,19 @@
   .servList {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .footerContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .footerColumn p {
+    font-size: 0.8em;
+  }
 }
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
-
+  
 }
 
 @keyframes rotate {
