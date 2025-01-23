@@ -518,8 +518,8 @@ const EstimatePage = () => {
                     checked={formik.values.termsAndConditions}
                   />
                   <label htmlFor="termsAndConditions">
-                    "I agree to the <a href="/terms">terms and conditions</a> of this appointment
-                    booking."
+                    &quo;I agree to the <a href="/terms">terms and conditions</a> of this appointment
+                    booking.&quo;
                   </label>
                   {formik.touched.termsAndConditions &&
                     formik.errors.termsAndConditions && (
