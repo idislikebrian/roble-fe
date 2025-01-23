@@ -26,6 +26,8 @@ import {
 
 import { BounceCards } from "@/components/BounceCards";
 import { FaqAccordion } from "@/components/FAQChatAccordion";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const ICON_STYLES = {
   size: 30,
@@ -104,14 +106,16 @@ const defaultData = [
     question: "What kind of materials do you use for roofing and siding?",
   },
   {
-    answer: "We provide free estimates for all our services. Contact us to schedule.",
+    answer:
+      "We provide free estimates for all our services. Contact us to schedule.",
     icon: "📝",
     iconPosition: "left",
     id: 4,
     question: "Do you offer free estimates?",
   },
   {
-    answer: "We have a team of experienced professionals with years of experience.",
+    answer:
+      "We have a team of experienced professionals with years of experience.",
     id: 5,
     question: "How experienced are your roofing and siding contractors?",
   },
@@ -120,12 +124,7 @@ const defaultData = [
 export default function Home() {
   return (
     <main className={styles.main}>
-      <nav className={styles.navContainer}>
-        <div></div>
-        <div className={styles.logo}>
-          <Image src="logo-black.svg" width={150} height={150} />
-        </div>
-      </nav>
+      <Navigation />
       <div className={styles.hero}>
         <BounceCards
           images={images}
@@ -167,7 +166,10 @@ export default function Home() {
         <Slideshow />
       </div>
       <div className={styles.contact}>
-      <div className={styles.faq} style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <div
+          className={styles.faq}
+          style={{ justifyContent: "center", alignItems: "center" }}
+        >
           <FaqAccordion
             data={defaultData}
             timestamp="Updated daily at 12:00 PM"
@@ -178,24 +180,8 @@ export default function Home() {
         </p>
         <h4>Let&apos;s create progress together.</h4>
         <Text />
-        
       </div>
-      <footer className={styles.footerContainer}>
-        <div className={styles.footerColumn}>
-          <p>Request an Estimate</p>
-        </div>
-        <div className={styles.footerColumn}>
-          <p>
-          📞 201 394 7939
-          </p>
-          <p>
-          📧 robleroofnsiding@gmail.com
-          </p>
-        </div>
-        <div className={styles.footerColumn}>
-          <p>Se habla español</p>
-        </div>
-      </footer>
+      <Footer />
       <div className={styles.top}>
         <Top />
       </div>

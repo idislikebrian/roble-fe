@@ -5,18 +5,12 @@
   --font-family-headings: "Bebas Neue", sans-serif;
   --font-family-body: "Work Sans", serif;
 
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
   --yellow: #FFC536;
   --mint: #AED0BF;
   --mauve: #BC9391;
   --red: #BF0703;
   --black: #02040F;
-
 }
-
 
 * {
   box-sizing: border-box;
@@ -34,11 +28,19 @@ body {
   font-family: var(--font-family-body);
 }
 
+h1 {
+  font-family: var(--font-family-headings);
+  font-size: xxx-large;
+  line-height: 1.1em;
+  margin: 0.7em 0em;
+}
+
 h2 {
   font-family: var(--font-family-headings);
   font-size: xxx-large;
   line-height: 0.9em;
   margin-bottom: 1em;
+  margin-top: 0.8em;
 }
 
 h3 {
@@ -50,11 +52,17 @@ h3 {
 p {
   font-family: var(--font-family-body);
   font-size: x-large;
+  margin-bottom: 20px;
+}
+
+ul, li {
+  margin: 10px;
+  font-size: x-large;
 }
 
 a {
   color: inherit;
-  margin: 20px;  
+  margin: 20px 0px;  
 }
 
 button {
@@ -84,12 +92,6 @@ footer {
   background-color: var(--black);
   color: var(--mint);
   width: 100%;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  button {
-    pointer-events: none;
-  }
 }
 
 /* Mobile */
