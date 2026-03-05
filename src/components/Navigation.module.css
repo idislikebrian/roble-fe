@@ -1,11 +1,66 @@
 .navContainer {
-    padding-top: 3em;
-    background-color: var(--yellow);
-    align-items: center;
-    display: flex;
-    justify-content: center;
+  background: var(--yellow);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
-  
+
+/* left slot */
+.left {
+  justify-self: start;
+  font-size: 1.2rem;
+}
+
+/* center slot */
 .logo {
-    margin-bottom: 40px;
+  justify-self: center;
+}
+
+.logo a {
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.logo a:hover {
+  transform: scale(1.05);
+}
+
+.logo h1 {
+  font-size: 7rem;
+  font-weight: bold;
+  color: var(--black);
+  font-family: var(--font-family-headings);
+  text-transform: uppercase;
+  line-height: 0.8;
+}
+
+.right {
+  justify-self: end;
+}
+
+.heroActionButton {
+  min-height: 52px;
+  font-size: 1.35rem !important;
+  padding: 0.8rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+
+  .left {
+    font-size: 0.9rem;
+  }
+  .heroActionButton {
+    font-size: 0.8rem !important;
+  }
+  .logo h1 {
+    font-size: 4rem;
+    line-height: 0.8;
+  }
 }

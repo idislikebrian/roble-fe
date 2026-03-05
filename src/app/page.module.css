@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(180deg, var(--yellow) 0%, #f8efdc 100%);
+  background: var(--yellow);
 }
 
 .maxWidth {
@@ -37,6 +37,7 @@
   background-color: var(--yellow);
   text-align: center;
   padding-top: 2rem;
+  margin-top: 200px;
 }
 
 .heroSubheadline {
@@ -78,21 +79,26 @@
 
 .serviceCard h3 {
   margin-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--black);
+  padding-bottom: 0.5rem;
 }
 
 .serviceList {
-  margin-left: 1rem;
+  margin-top: 2rem;
 }
 
 .serviceList li {
   margin: 0.35rem 0;
   font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-weight: 600;
 }
 
 .serviceDescription {
   margin-top: 0.75rem;
   margin-bottom: 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .serviceButton {
@@ -100,18 +106,50 @@
   min-height: 44px;
   font-size: 1rem !important;
   padding: 0.55rem 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.serviceButton:hover {
+  background-color: var(--mint);
+  color: var(--white);
 }
 
 .whySection {
   background-color: var(--mauve);
 }
 
-.featureList {
-  margin-left: 1rem;
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
-.featureList li {
-  margin: 0.5rem 0;
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  align-items: center;
+
+  background: #fffff1;
+  border: 2px solid var(--black);
+  padding: 1.25rem 1.5rem;
+
+  font-size: 1.15rem;
+  line-height: 1.4;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.featureCard svg {
+  color: var(--yellow);
+  margin-top: 4px;
+}
+
+.featureCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0 var(--black);
 }
 
 .areaSection {

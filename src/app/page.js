@@ -4,6 +4,9 @@ import Top from "@/components/Top";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Button from "@/components/ui/button";
+
+import { Check } from "lucide-react";
+
 import { SERVICES as services } from "@/config/services";
 
 const whyChooseUs = [
@@ -81,16 +84,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.whySection}`}>
-        <div className={styles.sectionInner}>
-          <h2>Why Choose Us</h2>
-          <ul className={styles.featureList}>
-            {whyChooseUs.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+<section className={`${styles.section} ${styles.whySection}`}>
+  <div className={styles.sectionInner}>
+    <h2>Why Choose Us</h2>
+
+    <div className={styles.featureGrid}>
+      {whyChooseUs.map((item) => (
+        <div key={item} className={styles.featureCard}>
+          <Check size={30} strokeWidth={4} />
+          <span>{item}</span>
         </div>
-      </section>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       <section className={`${styles.section} ${styles.areaSection}`}>
         <div className={styles.sectionInner}>
