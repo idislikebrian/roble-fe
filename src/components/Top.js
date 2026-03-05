@@ -27,8 +27,14 @@ const Top = () => {
   return (
       <button
         onClick={scrollToTop}
-        className={` ${isVisible ? "opacity-100" : "opacity-0"}`}
-        style={{ border: "none", outline: "none" }}
+        aria-label="Scroll to top"
+        style={{
+          border: "none",
+          outline: "none",
+          opacity: isVisible ? 1 : 0,
+          pointerEvents: isVisible ? "auto" : "none",
+          transition: "opacity 0.25s ease",
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

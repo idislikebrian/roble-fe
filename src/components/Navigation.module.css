@@ -1,5 +1,9 @@
 .navContainer {
     padding-top: 3em;
+    background-color: var(--yellow);
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
   
 .logo {

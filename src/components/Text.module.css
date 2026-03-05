@@ -24,13 +24,16 @@
     cursor: pointer;
 } 
 
-.text:hover {
-    transform: scale(1.05);
-    padding: 1em 2em;
+@media (hover: hover) and (pointer: fine) {
+    .text:hover {
+        transform: scale(1.05);
+        padding: 1em 2em;
+    }
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (max-width: 700px) {
     .text {
-        pointer-events: none;
+        font-size: 1.6rem;
+        padding: 0.65em 1.2em;
     }
 }

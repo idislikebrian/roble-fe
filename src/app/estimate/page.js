@@ -7,6 +7,9 @@ import Image from "next/image";
 import Top from "@/components/Top";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Button from "@/components/ui/button";
+
+import { Confetti } from "@/components/Confetti";
 
 const EstimatePage = () => {
   const [submissionStatus, setSubmissionStatus] = useState("");
@@ -92,6 +95,8 @@ const EstimatePage = () => {
     hearAboutUs: Yup.string().required("Please specify how you heard about us"),
   });
 
+  const confettiRef = useRef(null);
+
   // Formik for form handling
   const formik = useFormik({
     initialValues: {
@@ -125,12 +130,16 @@ const EstimatePage = () => {
         const response = await fetch("/api/saveFriend", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...values, appointmentDate: formattedAppointmentDate }), // Include formatted date
+          body: JSON.stringify({
+            ...values,
+            appointmentDate: formattedAppointmentDate,
+          }), // Include formatted date
         });
 
         const result = await response.json();
         if (result.success) {
           setSubmissionStatus("Form submitted successfully!");
+          confettiRef.current?.fire(); // Trigger confetti
           formik.resetForm(); // Reset form on successful submission
         } else {
           throw new Error(result.error || "Submission failed");
@@ -161,6 +170,7 @@ const EstimatePage = () => {
     <div className={styles.main}>
       <Navigation />
       <div className={styles.maxWidth}>
+      <Confetti ref={confettiRef} />
         <div className={styles.formInfo}>
           <h2>How can Roble help you today?</h2>
           <p>
@@ -171,35 +181,6 @@ const EstimatePage = () => {
         </div>
         <div>
           <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
-            <section className={styles.formSection}>
-              <h2>Project Type</h2>
-              <div className={`${styles.formSelection} ${styles.formGridTwo}`}>
-                <input
-                  type="radio"
-                  id="residential"
-                  name="projectType"
-                  value="residential"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  checked={formik.values.projectType === "residential"}
-                />
-                <label htmlFor="residential">Residential</label>
-                <input
-                  type="radio"
-                  id="commercial"
-                  name="projectType"
-                  value="commercial"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  checked={formik.values.projectType === "commercial"}
-                />
-                <label htmlFor="commercial">Commercial</label>
-              </div>
-              {formik.touched.projectType && formik.errors.projectType && (
-                <div className={styles.error}>{formik.errors.projectType}</div>
-              )}
-            </section>
-
             {/* Contact Information Section */}
             <section className={styles.formSection}>
               <h2>Contact Information</h2>
@@ -298,194 +279,258 @@ const EstimatePage = () => {
               </div>
             </section>
             <section className={styles.formSection}>
-              <h2>Service Details</h2>
-              <div>
-                <p>Check all that apply to your project:</p>
-                <br />
-                <div className={styles.formInputs}>
-                  <div
-                    className={`${styles.formSelection} ${styles.formGridFour}`}
-                  >
+              <fieldset>
+                <legend>
+                  <h3>Service Details</h3>
+                </legend>
+                <div className={styles.formSection}>
+                  <p>Project Type:</p>
+                  <div className={styles.projectType}>
+                    <div>
+                      <input
+                        type="radio"
+                        className={`${styles.chip} ${styles.bounce}`}
+                        id="residential"
+                        name="projectType"
+                        value="residential"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        checked={formik.values.projectType === "residential"}
+                      />
+                      <label htmlFor="residential">Residential</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        className={`${styles.chip} ${styles.bounce}`}
+                        id="commercial"
+                        name="projectType"
+                        value="commercial"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        checked={formik.values.projectType === "commercial"}
+                      />
+                      <label htmlFor="commercial">Commercial</label>
+                    </div>
+                    {formik.touched.projectType &&
+                      formik.errors.projectType && (
+                        <div className={styles.error}>
+                          {formik.errors.projectType}
+                        </div>
+                      )}
+                  </div>
+                </div>
+                <div className={styles.formSection}>
+                  <p>Check all that apply to your project:</p>
+                  <div>
                     <input
                       type="checkbox"
-                      id="initialInspection"
-                      name="services"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
                       value="Initial Inspection / Information Gathering"
                       onChange={handleServiceChange}
+                      id="initialInspection"
+                      name="services"
+                      aria-label="Initial Inspection / Information Gathering"
+                      defaultChecked
                     />
-                    <label htmlFor="initialInspection">
-                      Initial Inspection / Information Gathering
-                    </label>
+                    <label htmlFor="initialInspection"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Roofing Project - New Construction"
                       id="roofingNewConstruction"
                       name="services"
                       value="Roofing Project - New Construction"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="roofingNewConstruction">
-                      Roofing Project - New Construction
-                    </label>
+                    <label htmlFor="roofingNewConstruction"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Re-roofing Project"
                       id="reRoofingProject"
                       name="services"
                       value="Re-roofing Project"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="reRoofingProject">Re-roofing Project</label>
+                    <label htmlFor="reRoofingProject"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Roofing Repair/Restoration"
                       id="roofingRepairRestoration"
                       name="services"
                       value="Roofing Repair/Restoration"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="roofingRepairRestoration">
-                      Roofing Repair/Restoration
-                    </label>
+                    <label htmlFor="roofingRepairRestoration"></label>
                     <input
                       type="checkbox"
-                      id="preventativeMaintenance"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Roofing Repair/Restoration"
                       name="services"
+                      id="preventativeMaintenance"
                       value="Preventative Roofing Maintenance"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="preventativeMaintenance">
-                      Preventative Roofing Maintenance
-                    </label>
+                    <label htmlFor="preventativeMaintenance"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Vinyl Siding"
                       id="vinylSiding"
                       name="services"
                       value="Vinyl Siding"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="vinylSiding">Vinyl Siding</label>
+                    <label htmlFor="vinylSiding"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Replacement Window(s)"
                       id="replacementWindows"
                       name="services"
                       value="Replacement Window(s)"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="replacementWindows">
-                      Replacement Window(s)
-                    </label>
+                    <label htmlFor="replacementWindows"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Skylight(s) / Roof Windows"
                       id="skylightsRoofWindows"
                       name="services"
                       value="Skylight(s) / Roof Windows"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="skylightsRoofWindows">
-                      Skylight(s) / Roof Windows
-                    </label>
+                    <label htmlFor="skylightsRoofWindows"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Door(s)"
                       id="doors"
                       name="services"
                       value="Door(s)"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="doors">Door(s)</label>
+                    <label htmlFor="doors"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Trim"
                       id="trim"
                       name="services"
                       value="Trim (describe in box below)"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="trim">Trim (describe in box below)</label>
+                    <label htmlFor="trim"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Gutters / Downspouts"
                       id="guttersDownspouts"
                       name="services"
                       value="Gutters / Downspouts"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="guttersDownspouts">
-                      Gutters / Downspouts
-                    </label>
+                    <label htmlFor="guttersDownspouts"></label>
                     <input
                       type="checkbox"
+                      className={`${styles.chip} ${styles.bounce}`}
+                      role="switch"
+                      aria-label="Ventilation"
                       id="ventilation"
                       name="services"
                       value="Ventilation"
                       onChange={handleServiceChange}
                     />
-                    <label htmlFor="ventilation">Ventilation</label>
+                    <label htmlFor="ventilation"></label>
                   </div>
                 </div>
-                <div className={styles.formInputs}>
-                  <label htmlFor="projectDescription"></label>
-                  <textarea
-                    id="projectDescription"
-                    name="projectDescription"
-                    placeholder="Brief Description of the Project"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.projectDescription}
-                  ></textarea>
-                  <label htmlFor="budgetRange">Budget Range</label>
-                  <select
-                    id="budgetRange"
-                    name="budgetRange"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.budgetRange}
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Under $1,000">Under $1,000</option>
-                    <option value="$1,000-$5,000">$1,000-$5,000</option>
-                    <option value="$5,000-$10,000">$5,000-$10,000</option>
-                    <option value="$10,000 +">$10,000 +</option>
-                  </select>
-                  <label htmlFor="communicationMethod">
-                    Preferred Method of Communication
-                  </label>
-                  <select id="communicationMethod" name="communicationMethod">
-                    <option value="">Select an option</option>
-                    <option value="Email">Email</option>
-                    <option value="Phone">Phone</option>
-                    <option value="Text">Text</option>
-                  </select>
-                  <label htmlFor="appointmentDate">
-                    Preferred Appointment Date and Time
-                  </label>
-                  <input
-                    type="datetime-local"
-                    id="appointmentDate"
-                    name="appointmentDate"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.appointmentDate}
-                  />
-                  <label htmlFor="timeframe">
-                    Are You Looking to Complete the Project Within a Specific
-                    Timeframe?
-                  </label>
-                  <select
-                    id="timeframe"
-                    name="timeframe"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.timeframe}
-                  >
-                    <option value="">Select an option</option>
-                    <option value="immediately">Immediately</option>
-                    <option value="less_than_3_months">
-                      Less than 3 months
-                    </option>
-                    <option value="3_to_6_months">3-6 months</option>
-                    <option value="6_to_12_months">6-12 months</option>
-                  </select>
+                <div className={styles.formSection}>
+                  <p>Details:</p>
+                  <div className={styles.formInputs}>
+                    <label htmlFor="projectDescription"></label>
+                    <textarea
+                      id="projectDescription"
+                      name="projectDescription"
+                      placeholder="Brief Description of the Project"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.projectDescription}
+                    ></textarea>
+                    <label htmlFor="budgetRange">Budget Range</label>
+                    <select
+                      id="budgetRange"
+                      name="budgetRange"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.budgetRange}
+                    >
+                      <option value="">Select an option</option>
+                      <option value="Under $1,000">Under $1,000</option>
+                      <option value="$1,000-$5,000">$1,000-$5,000</option>
+                      <option value="$5,000-$10,000">$5,000-$10,000</option>
+                      <option value="$10,000 +">$10,000 +</option>
+                    </select>
+                    <label htmlFor="communicationMethod">
+                      Preferred Method of Communication
+                    </label>
+                    <select id="communicationMethod" name="communicationMethod">
+                      <option value="">Select an option</option>
+                      <option value="Email">Email</option>
+                      <option value="Phone">Phone</option>
+                      <option value="Text">Text</option>
+                    </select>
+                    <label htmlFor="appointmentDate">
+                      Preferred Appointment Date and Time
+                    </label>
+                    <input
+                      type="datetime-local"
+                      id="appointmentDate"
+                      name="appointmentDate"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.appointmentDate}
+                    />
+                    <label htmlFor="timeframe">
+                      Are You Looking to Complete the Project Within a Specific
+                      Timeframe?
+                    </label>
+                    <select
+                      id="timeframe"
+                      name="timeframe"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.timeframe}
+                    >
+                      <option value="">Select an option</option>
+                      <option value="immediately">Immediately</option>
+                      <option value="less_than_3_months">
+                        Less than 3 months
+                      </option>
+                      <option value="3_to_6_months">3-6 months</option>
+                      <option value="6_to_12_months">6-12 months</option>
+                    </select>
+                    {formik.touched.services && formik.errors.services && (
+                      <div className={styles.error}>
+                        {formik.errors.services}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-              {formik.touched.services && formik.errors.services && (
-                <div className={styles.error}>{formik.errors.services}</div>
-              )}
+              </fieldset>
             </section>
             <section className={styles.formSection}>
               <h2>Reach out</h2>
@@ -505,10 +550,10 @@ const EstimatePage = () => {
                   <option value="Referral">Referral</option>
                   <option value="Other">Other</option>
                 </select>
-                <button type="submit">Send</button>
-                <div
-                  className={`${styles.formSelection} ${styles.formGridTwo}`}
-                >
+                <Button type="submit" theme="PRIMARY">
+                  Send
+                </Button>
+                <div className={`${styles.terms}`}>
                   <input
                     type="checkbox"
                     id="termsAndConditions"
@@ -518,8 +563,9 @@ const EstimatePage = () => {
                     checked={formik.values.termsAndConditions}
                   />
                   <label htmlFor="termsAndConditions">
-                    &quo;I agree to the <a href="/terms">terms and conditions</a> of this appointment
-                    booking.&quo;
+                    {`"`}I agree to the{" "}
+                    <a href="/terms">terms and conditions</a> of this
+                    appointment booking.{`"`}
                   </label>
                   {formik.touched.termsAndConditions &&
                     formik.errors.termsAndConditions && (

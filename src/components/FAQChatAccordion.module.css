@@ -96,10 +96,26 @@
 
 /* Mobile */
 @media (max-width: 700px) {
-  .card {
-    width: 40%;
-    aspect-ratio: 4/3;
-    border: 4px solid var(--black);
+  .faqAccordion {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .accordionTrigger {
+    gap: 8px;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+
+  .answerContainer {
+    margin-left: 0;
+  }
+
+  .answer {
+    max-width: 100%;
+    margin: 8px 0 24px;
   }
 }
 

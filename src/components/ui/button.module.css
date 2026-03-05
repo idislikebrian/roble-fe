@@ -1,0 +1,35 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-height: 50px;
+  font-size: 40px;
+  padding: 10px 16px;
+  font-family: var(--font-family-headings);
+  cursor: pointer;
+  border: 2px solid var(--black);
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.primary {
+  background-color: var(--black);
+  color: #fffff1;
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--black);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 700px) {
+  .button {
+    font-size: 32px;
+  }
+}

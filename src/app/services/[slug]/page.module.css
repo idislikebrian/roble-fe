@@ -1,0 +1,121 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--yellow) 0%, #f8efdc 100%);
+}
+
+.heroSection,
+.detailsSection {
+  width: 100%;
+  padding: 3rem 1.5rem;
+}
+
+.heroSection {
+  background-color: var(--yellow);
+}
+
+.detailsSection {
+  background-color: #fffff1;
+}
+
+.sectionInner {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.description {
+  max-width: 850px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.actionButton {
+  min-height: 52px;
+  font-size: 1.2rem !important;
+  padding: 0.75rem 1.25rem;
+}
+
+.list {
+  margin-left: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.list li {
+  margin: 0.5rem 0;
+}
+
+.detailsSection h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.detailsSection h2:first-of-type {
+  margin-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card,
+.faqItem {
+  border: 2px solid var(--black);
+  background-color: #fff6df;
+  padding: 1rem;
+}
+
+.card h3,
+.faqItem h3 {
+  margin-bottom: 0.5rem;
+}
+
+.faqWrap {
+  display: grid;
+  gap: 1rem;
+}
+
+.top {
+  position: fixed;
+  left: 20px;
+  bottom: calc(100vh - 80%);
+}
+
+@media (max-width: 700px) {
+  .heroSection,
+  .detailsSection {
+    padding: 1.5rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionButton {
+    width: 100%;
+    font-size: 1.1rem !important;
+  }
+
+  .top {
+    left: 12px;
+    bottom: 24px;
+  }
+}

@@ -9,10 +9,10 @@ const Navigation = () => {
       <div className={styles.logo}>
         <Link href="/">
           <Image
-            src="logo-black.svg"
+            src="/logo-black.svg"
             width={150}
             height={150}
-            priority={"blur"}
+            priority
             alt="Roble logo. The word roble in a box with a roof draw over the box."
           />
         </Link>
